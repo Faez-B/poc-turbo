@@ -24,4 +24,30 @@
             </article>
         </dialog>
     </div>
+
+    <div id="tasks">
+        {% for task in tasks %}
+            <article>
+                <header>
+                    {{ task.id }} - {{ task.title }}
+                </header>
+
+                <p>{{ task.description }}</p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block success_stream %}
+    <turbo-stream action="append" targets="#tasks">
+        <template>
+            <article>
+                <header>
+                    {{ task.id }} - {{ task.title }}
+                </header>
+
+                <p>{{ task.description }}</p>
+            </article>
+        </template>
+    </turbo-stream>
 {% endblock %}

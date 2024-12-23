@@ -20,6 +20,7 @@ class HomeController extends AbstractController
 
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
+        $emptyForm = clone $form;
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -30,7 +31,10 @@ class HomeController extends AbstractController
             if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
                 // If the request comes from Turbo, set the content type as text/vnd.turbo-stream.html and only send the HTML to update
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-                return $this->renderBlock('home/index.html.twig', 'success_stream', ['task' => $task]);
+                return $this->renderBlock('home/index.html.twig', 'success_stream', [
+                    'task' => $task,
+                    'form' => $emptyForm,
+                ]);
             }
         }
 

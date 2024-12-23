@@ -17,10 +17,12 @@
                     <h2>Add a task</h2>
                 </header>
 
-                {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <button type="submit" {{ stimulus_action('modal', 'closeModal', 'click') }}>Valider</button>
-                {{ form_end(form) }}
+                {% block task_form %}
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <button type="submit" {{ stimulus_action('modal', 'closeModal', 'click') }}>Valider</button>
+                    {{ form_end(form) }}
+                {% endblock %}
             </article>
         </dialog>
     </div>
@@ -39,6 +41,12 @@
 {% endblock %}
 
 {% block success_stream %}
+    <turbo-stream action="replace" targets="form[name=task]">
+        <template>
+            {{ block('task_form') }}
+        </template>
+    </turbo-stream>
+
     <turbo-stream action="append" targets="#tasks">
         <template>
             <article>

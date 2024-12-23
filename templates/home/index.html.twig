@@ -6,9 +6,11 @@
     {# In order to use a Stimulus controller we have to activate it : stimulus_controller('modal') #}
     {# Else we could remove : stimulusFetch: 'lazy', from the controller #}
     <div class="modal-container" {{ stimulus_controller('modal') }}>
-        <button {{ stimulus_action('modal', 'toggleModal', 'click') }}>
-            Add a task
-        </button>
+        <section>
+            <button {{ stimulus_action('modal', 'toggleModal', 'click') }}>
+                Add a task
+            </button>
+        </section>
 
         <dialog {{ stimulus_target('modal', 'dialog') }}>
             <article>

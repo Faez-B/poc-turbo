@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block update %}
-    <turbo-stream action="update" target="message_{{ id }}">
+    <turbo-stream action="replace" target="message_{{ id }}">
         <template>
             {% include "chat/_message.html.twig" with { message: entity } %}
         </template>

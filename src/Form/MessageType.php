@@ -19,6 +19,8 @@ class MessageType extends AbstractType
                     'placeholder' => 'Type your message here',
                     'rows' => 3,
                 ],
+                'data' => '',
+                'empty_data' => '',
             ])
         ;
     }

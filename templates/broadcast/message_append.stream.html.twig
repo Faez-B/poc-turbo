@@ -1,3 +1,9 @@
+<turbo-stream action="replace" targets="form[name=message]">
+	<template>
+        {% include "chat/_form.html.twig" %}
+	</template>
+</turbo-stream>
+
 <turbo-stream action="append" target="messages">
 	<template>
 		<article class="secondary">{{ message }}</article>

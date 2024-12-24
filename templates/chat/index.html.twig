@@ -13,5 +13,7 @@
 		{% endfor %}
 	</div>
 
-    {% include "chat/_form.html.twig" %}
+	<turbo-frame id="message_form">
+	    {% include "chat/_form.html.twig" %}
+	</turbo-frame>
 {% endblock %}

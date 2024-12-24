@@ -5,9 +5,9 @@
 {% block body %}
 	<div id="messages" {{ turbo_stream_listen('chat') }}>
 		{% for message in messages %}
-			<article class="secondary">{{ message.content }}</article>
+			{% include "chat/_message.html.twig" %}
 		{% else %}
-			<article id="no-messages" class="secondary">
+			<article id="no-messages" class="empty">
 				<div>No message yet</div>
 			</article>
 		{% endfor %}

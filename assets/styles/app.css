@@ -1,0 +1,4 @@
+/* style the <article class="empty"> with a next sibling that is <article>  */
+article.empty:has(+ article:not(.empty)) {
+  display: none;
+}

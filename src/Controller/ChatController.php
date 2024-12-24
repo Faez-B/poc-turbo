@@ -18,7 +18,6 @@ class ChatController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em, HubInterface $hub): Response
     {
         $messages = $em->getRepository(Message::class)->findAll();
-        $action = count($messages) === 0 ? 'message_replace' : 'message_append';
 
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
@@ -28,15 +27,6 @@ class ChatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($message);
             $em->flush();
-
-            // 🔥 The magic happens here! 🔥
-            // The HTML update is pushed to the client using Mercure
-            $hub->publish(new Update(
-                'chat',
-                $this->renderView('broadcast/' . $action . '.stream.html.twig', [
-                    'message' => $message->getContent(),
-                ])
-            ));
 
             $form = $emptyForm;
         }

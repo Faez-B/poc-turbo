@@ -6,7 +6,6 @@ use App\Entity\Message;
 use App\Form\MessageType;
 use Symfony\UX\Turbo\TurboBundle;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

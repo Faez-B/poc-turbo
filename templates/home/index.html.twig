@@ -22,7 +22,7 @@
                 {% block task_form %}
                     {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <button type="submit" {{ stimulus_action('modal', 'closeModal', 'click') }}>Valider</button>
+                        <button type="submit" {{ stimulus_action('modal', 'closeModal', 'click') }}>Add</button>
                     {{ form_end(form) }}
                 {% endblock %}
             </article>

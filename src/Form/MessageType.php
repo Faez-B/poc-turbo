@@ -19,7 +19,7 @@ class MessageType extends AbstractType
                     'placeholder' => 'Type your message here',
                     'rows' => 3,
                 ],
-                'data' => '',
+                'data' => $builder->getData()?->getContent() ?? '',
                 'empty_data' => '',
             ])
         ;
